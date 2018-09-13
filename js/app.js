@@ -30,8 +30,21 @@ questionArray.push('Did I go to Oregon State University for college?');
 questionArray.push('Are my parents living in Seattle as of September 11th, 2018?');
 questionArray.push('Do I currently have a dog?');
 questionArray.push('I\'m thinking of a number between 1 and 100, inclusive. Guess it!');
-questionArray.push('Name one of my favorite foods');
+questionArray.push('Name one of my favorite foods.');
 
+var foodsArray = [];
+foodsArray.push('hamburger');
+foodsArray.push('hamburgers');
+foodsArray.push('hamburgers!');
+foodsArray.push('sushi!');
+foodsArray.push('sushi');
+foodsArray.push('steak');
+foodsArray.push('steak!');
+var validFoodAnswers = '"';
+for(var i = 0; i < (foodsArray.length-1); i++){
+  validFoodAnswers = validFoodAnswers + foodsArray[i] + '", "';
+}
+validFoodAnswers = validFoodAnswers + 'or ' + foodsArray[6] + '"';
 //2-D array of answers - each index has an array of valid answers
 // var answerArray = [];
 // answerArray.push(['N', 'NO']);
@@ -146,8 +159,9 @@ for(var questionNumber = 0; questionNumber < questionArray.length; questionNumbe
     var maxGuesses = 4;
     while(guesses <= maxGuesses){
       userNumResponse = prompt(questionArray[questionNumber]);
+      userNumResponse = parseInt(userNumResponse, 10);
       if(userNumResponse === randomNumber){
-        alert('Yes, ' + userNumResponse + ' is the number I was thinking of! That only took you ' + (guesses+1) + ' attempt(s)!');
+        alert('Yes, ' + userNumResponse + ' is the number I was thinking of! That only took you ' + (guesses) + ' attempt(s)!');
         correctAnswers++;
         guesses = maxGuesses;
         break;
@@ -172,177 +186,40 @@ for(var questionNumber = 0; questionNumber < questionArray.length; questionNumbe
     }
     break;
   case 6:
-    alert('fix this');
+    console.log('Asking about favorite food');
+    //probably shouldn't rename the guesses variable for maintainability's sake...
+    guesses = 0;
+    maxGuesses = 6;
+    var userFoodResponse = '';
+    while(guesses < maxGuesses){
+      userFoodResponse = prompt('Guess one of my top three favorite foods!');
+      if(userFoodResponse === null){
+        userFoodResponse = '';
+      }
+      userFoodResponse = userFoodResponse.toLowerCase();
+      for(i = 0; i < foodsArray.length; i++){
+        if(userFoodResponse === foodsArray[i]){
+          alert('That\'s correct! You picked one of my favorite foods out of the valid set of ' + validFoodAnswers + '.');
+          correctAnswers++;
+          i = foodsArray.length;
+          guesses = maxGuesses;
+        }
+      }
+      if(guesses < maxGuesses){
+        alert('That is not one of my top three foods. Try again.');
+      }
+      guesses++;
+      if(guesses === maxGuesses){
+        alert('Actually, you\'re out of guesses, sorry. A valid choice would be any of ' + validFoodAnswers + '.');
+        incorrectAnswers++;
+      }
+    }
     break;
   default:
     console.log('Quiz escaped set of 7 questions!');
     break;
   }
 }
-
-// // Reconfigure this into a general function? correct answer is NO
-// var ageResponse = '';
-// while(ageResponse === '' || ageResponse === null){
-//   ageResponse = prompt('Am I currently 24 years old?');
-//   if(ageResponse === null){
-//     console.log('User input resulted in null - likely hit close');
-//     alert('I\'m sorry, I didn\'t quite understand that response. Can you try again?');
-//   }
-//   else{
-//     ageResponse = ageResponse.toUpperCase();
-//     if(ageResponse === 'Y' || ageResponse === 'YES'){
-//       console.log('User incorrectly responded ' + ageResponse + '. Was expecting N or NO');
-//       alert('I\'m sorry, that\'s not correct. Unless my birth certificate is wrong, I\'m at least 25!');
-//       incorrectAnswers++;
-//     }
-//     else if(ageResponse === 'N' || ageResponse === 'NO'){
-//       console.log('User correctly responded ' + ageResponse);
-//       alert('That is correct!');
-//       correctAnswers++;
-//     }
-//     else{
-//       console.log('User provided input outside of expected [Y,N,YES,NO] - was ' + ageResponse);
-//       alert('I\'m sorry, I didn\'t quite catch that. Can you respond with either yes, no, y, or n?');
-//       ageResponse = '';
-//     }
-//   }
-// }
-
-// // Reconfigure this into a general function? correct answer is YES
-// var brotherResponse = '';
-// while(brotherResponse === '' || brotherResponse === null){
-//   brotherResponse = prompt('Do I only have one brother?');
-//   if(brotherResponse === null){
-//     console.log('User input resulted in null - likely hit close');
-//     alert('I\'m sorry, I didn\'t quite understand that response. Can you try again?');
-//   }
-//   else{
-//     brotherResponse = brotherResponse.toUpperCase();
-//     if(brotherResponse === 'N' || brotherResponse === 'NO'){
-//       console.log('User incorrectly responded ' + brotherResponse + '. Was expecting Y or YES');
-//       alert('I\'m sorry, that\'s not correct. Unless my parents aren\'t being truthful, I only have one brother.');
-//       incorrectAnswers++;
-//     }
-//     else if(brotherResponse === 'Y' || brotherResponse === 'YES'){
-//       console.log('User correctly responded ' + brotherResponse);
-//       alert('That is correct!');
-//       correctAnswers++;
-//     }
-//     else{
-//       console.log('User provided input outside of expected [Y,N,YES,NO] - was ' + brotherResponse);
-//       alert('I\'m sorry, I didn\'t quite catch that. Can you respond with either yes, no, y, or n?');
-//       brotherResponse = '';
-//     }
-//   }
-// }
-
-// var collegeResponse = '';
-// while(collegeResponse === '' || collegeResponse === null){
-//   collegeResponse = prompt('Did I go to Oregon State University for college?');
-//   if(collegeResponse === null){
-//     console.log('User input resulted in null - likely hit close');
-//     alert('I\'m sorry, I didn\'t quite understand that response. Can you try again?');
-//   }
-//   else{
-//     collegeResponse = collegeResponse.toUpperCase();
-//     if(collegeResponse === 'N' || collegeResponse === 'NO'){
-//       console.log('User incorrectly responded ' + collegeResponse + '. Was expecting Y or YES');
-//       alert('I\'m sorry, that\'s not correct. I did go to Oregon State University.');
-//       incorrectAnswers++;
-//     }
-//     else if(collegeResponse === 'Y' || collegeResponse === 'YES'){
-//       console.log('User correctly responded ' + collegeResponse);
-//       alert('That is correct!');
-//       correctAnswers++;
-//     }
-//     else{
-//       console.log('User provided input outside of expected [Y,N,YES,NO] - was ' + collegeResponse);
-//       alert('I\'m sorry, I didn\'t quite catch that. Can you respond with either yes, no, y, or n?');
-//       collegeResponse = '';
-//     }
-//   }
-// }
-
-// var parentsResponse = '';
-// while(parentsResponse === '' || parentsResponse === null){
-//   parentsResponse = prompt('Are my parents living in Seattle as of September 11th, 2018?');
-//   if(parentsResponse === null){
-//     console.log('User input resulted in null - likely hit close');
-//     alert('I\'m sorry, I didn\'t quite understand that response. Can you try again?');
-//   }
-//   else{
-//     parentsResponse = parentsResponse.toUpperCase();
-//     if(parentsResponse === 'Y' || parentsResponse === 'YES'){
-//       console.log('User incorrectly responded ' + parentsResponse + '. Was expecting N or NO');
-//       alert('I\'m sorry, that\'s not correct. They should still be living in Portland.');
-//       incorrectAnswers++;
-//     }
-//     else if(parentsResponse === 'N' || parentsResponse === 'NO'){
-//       console.log('User correctly responded ' + parentsResponse);
-//       alert('That is correct!');
-//       correctAnswers++;
-//     }
-//     else{
-//       console.log('User provided input outside of expected [Y,N,YES,NO] - was ' + parentsResponse);
-//       alert('I\'m sorry, I didn\'t quite catch that. Can you respond with either yes, no, y, or n?');
-//       parentsResponse = '';
-//     }
-//   }
-// }
-
-// var petsResponse = '';
-// while(petsResponse === '' || petsResponse === null){
-//   petsResponse = prompt('Do I currently have a dog?');
-//   if(petsResponse === null){
-//     console.log('User input resulted in null - likely hit close');
-//     alert('I\'m sorry, I didn\'t quite understand that response. Can you try again?');
-//   }
-//   else{
-//     petsResponse = petsResponse.toUpperCase();
-//     if(petsResponse === 'Y' || petsResponse === 'YES'){
-//       console.log('User incorrectly responded ' + petsResponse + '. Was expecting N or NO');
-//       alert('I\'m sorry, that\'s not correct. Though I\'d like to have a dog, I don\'t have any pets at the moment.');
-//       incorrectAnswers++;
-//     }
-//     else if(petsResponse === 'N' || petsResponse === 'NO'){
-//       console.log('User correctly responded ' + petsResponse);
-//       alert('That is correct!');
-//       correctAnswers++;
-//     }
-//     else{
-//       console.log('User provided input outside of expected [Y,N,YES,NO] - was ' + petsResponse);
-//       alert('I\'m sorry, I didn\'t quite catch that. Can you respond with either yes, no, y, or n?');
-//       petsResponse = '';
-//     }
-//   }
-// }
-
-// /*var seattleResponse = '';
-// while(seattleResponse === '' || seattleResponse === null){
-//   seattleResponse = prompt('Did I move to Seattle in 2016?');
-//   if(seattleResponse === null){
-//     console.log('User input resulted in null - likely hit close');
-//     alert('I\'m sorry, I didn\'t quite understand that response. Can you try again?');
-//   }
-//   else{
-//     seattleResponse = seattleResponse.toUpperCase();
-//     if(seattleResponse === 'N' || seattleResponse === 'NO'){
-//       console.log('User incorrectly responded ' + seattleResponse + '. Was expecting Y or YES');
-//       alert('I\'m sorry, that\'s not correct. I did move to Seattle in 2016.');
-//       incorrectAnswers++;
-//     }
-//     else if(seattleResponse === 'Y' || seattleResponse === 'YES'){
-//       console.log('User correctly responded ' + seattleResponse);
-//       alert('That is correct!');
-//       correctAnswers++;
-//     }
-//     else{
-//       console.log('User provided input outside of expected [Y,N,YES,NO] - was ' + seattleResponse);
-//       alert('I\'m sorry, I didn\'t quite catch that. Can you respond with either yes, no, y, or n?');
-//       seattleResponse = '';
-//     }
-//   }
-// }*/
 
 // Give slightly different messages based on if they answered at least half of the questions correctly.
 if(correctAnswers >= incorrectAnswers){
