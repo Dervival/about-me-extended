@@ -45,32 +45,6 @@ for(var i = 0; i < (foodsArray.length-1); i++){
   validFoodAnswers = validFoodAnswers + foodsArray[i] + '", "';
 }
 validFoodAnswers = validFoodAnswers + 'or ' + foodsArray[6] + '"';
-//2-D array of answers - each index has an array of valid answers
-// var answerArray = [];
-// answerArray.push(['N', 'NO']);
-// answerArray.push(['Y', 'YES']);
-// answerArray.push(['Y', 'YES']);
-// answerArray.push(['N', 'NO']);
-// answerArray.push(['N', 'NO']);
-//var randomNumber = [];
-//randomNumber = Math.ceil(100*Math.random());
-//console.log('Hidden number is ' + randomNumber);
-//answerArray.push(randomNumber);
-//answerArray.push();
-
-// var incorrectAnswerArray = [];
-// incorrectAnswerArray.push(['Y'],['YES']);
-// incorrectAnswerArray.push(['N'],['NO']);
-// incorrectAnswerArray.push(['N'],['NO']);
-// incorrectAnswerArray.push(['Y'],['YES']);
-// incorrectAnswerArray.push(['Y'],['YES']);
-
-// var incorrectResponseArray = [];
-// incorrectResponseArray.push('I\'m sorry, that\'s not correct. Unless my birth certificate is wrong, I\'m at least 25!');
-// incorrectResponseArray.push('I\'m sorry, that\'s not correct. Unless my parents aren\'t being truthful, I only have one brother.');
-// incorrectResponseArray.push('I\'m sorry, that\'s not correct. I did go to Oregon State University.');
-// incorrectResponseArray.push('I\'m sorry, that\'s not correct. They should still be living in Portland.');
-// incorrectResponseArray.push('I\'m sorry, that\'s not correct. Though I\'d like to have a dog, I don\'t have any pets at the moment.');
 
 var userResponse = '';
 for(var questionNumber = 0; questionNumber < questionArray.length; questionNumber++){
