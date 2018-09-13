@@ -25,65 +25,158 @@ var incorrectAnswers = 0;
 
 var questionArray = [];
 questionArray.push('Am I currently 24 years old?');
+questionArray.push('Do I only have one brother?');
+questionArray.push('Did I go to Oregon State University for college?');
 questionArray.push('Are my parents living in Seattle as of September 11th, 2018?');
-//questionArray.push('Did I go to Oregon State University for college?');
-//questionArray.push('Am I currently 24 years old?');
-//questionArray.push('Do I currently have a dog?');
-//questionArray.push('I\'m thinking of a number between 1 and 100, inclusive. Guess it!');
-//questionArray.push('Name one of my favorite foods');
+questionArray.push('Do I currently have a dog?');
+questionArray.push('I\'m thinking of a number between 1 and 100, inclusive. Guess it!');
+questionArray.push('Name one of my favorite foods');
 
 //2-D array of answers - each index has an array of valid answers
-var answerArray = [];
-answerArray.push(['N', 'NO']);
-//answerArray.push(ageAns);
-//answerArray.push();
-//answerArray.push();
-//answerArray.push();
-//answerArray.push();
+// var answerArray = [];
+// answerArray.push(['N', 'NO']);
+// answerArray.push(['Y', 'YES']);
+// answerArray.push(['Y', 'YES']);
+// answerArray.push(['N', 'NO']);
+// answerArray.push(['N', 'NO']);
 //var randomNumber = [];
 //randomNumber = Math.ceil(100*Math.random());
 //console.log('Hidden number is ' + randomNumber);
 //answerArray.push(randomNumber);
 //answerArray.push();
 
-var incorrectAnswerArray = [];
-incorrectAnswerArray.push(['Y'],['YES']);
+// var incorrectAnswerArray = [];
+// incorrectAnswerArray.push(['Y'],['YES']);
+// incorrectAnswerArray.push(['N'],['NO']);
+// incorrectAnswerArray.push(['N'],['NO']);
+// incorrectAnswerArray.push(['Y'],['YES']);
+// incorrectAnswerArray.push(['Y'],['YES']);
 
-var incorrectResponseArray = [];
-incorrectResponseArray.push('I\'m sorry, that\'s not correct. Unless my birth certificate is wrong, I\'m at least 25!');
+// var incorrectResponseArray = [];
+// incorrectResponseArray.push('I\'m sorry, that\'s not correct. Unless my birth certificate is wrong, I\'m at least 25!');
+// incorrectResponseArray.push('I\'m sorry, that\'s not correct. Unless my parents aren\'t being truthful, I only have one brother.');
+// incorrectResponseArray.push('I\'m sorry, that\'s not correct. I did go to Oregon State University.');
+// incorrectResponseArray.push('I\'m sorry, that\'s not correct. They should still be living in Portland.');
+// incorrectResponseArray.push('I\'m sorry, that\'s not correct. Though I\'d like to have a dog, I don\'t have any pets at the moment.');
 
-var resultsArray = [];
-var userResponse = ''
+var userResponse = '';
 for(var questionNumber = 0; questionNumber < questionArray.length; questionNumber++){
-  while(userResponse === '' || userResponse === null){
-    console.log(username + ' was asked ' + questionArray[questionNumber]);
-    userResponse = prompt(questionArray[questionNumber]).toUpperCase();
-    console.log(username + ' answered ' + userResponse);
-    for(var answerNumber = 0; answerNumber < answerArray[questionNumber].length; answerNumber++){
-      console.log('Checking input ' + userResponse + ' against ' + answerArray[questionNumber][answerNumber]);
-      if(userResponse === answerArray[questionNumber][answerNumber]){
-        alert('That is correct!');
-        correctAnswers++;
-        resultsArray.push('Correct');
-        //fake break statement; no need to check later elements in the array if a correct answer is found
-        answerNumber = answerArray[questionNumber].length;
-      }
-    }
-    for(var incorrectAnswerNumber = 0; incorrectAnswerNumber < incorrectAnswerArray[questionNumber].length; incorrectAnswerNumber++){
-      console.log('Checking input ' + userResponse + ' against ' + incorrectAnswerArray[questionNumber][incorrectAnswerNumber]);
-      if(userResponse === incorrectAnswerArray[questionNumber][incorrectAnswerNumber]){
-        console.log('Attempting to respond with "' + incorrectResponseArray[questionNumber] +'"');
-        alert(incorrectResponseArray[questionNumber]);
-        incorrectAnswers++;
-        resultsArray.push('Incorrect');
-        incorrectAnswerNumber = incorrectAnswerArray[questionNumber].length;
-      }
-    }
-    if(resultsArray.length <= questionNumber){
-      console.log(userResponse + ' did not match any correct or incorrect answers, resetting');
-      alert('I\'m sorry, I didn\'t quite catch that. Can you respond with either yes, no, y, or n?');
+  console.log('Asking question #' + (questionNumber+1) + ': ' + questionArray[questionNumber]);
+  switch(questionNumber){
+  case 0:
+    userResponse = prompt(questionArray[questionNumber]);
+    if(userResponse === null){
       userResponse = '';
     }
+    userResponse = userResponse.toUpperCase();
+    if(userResponse === 'NO' || userResponse === 'N'){
+      correctAnswers++;
+      alert('That is correct!');
+    }
+    else{
+      incorrectAnswers++;
+      alert('That is not correct, sorry.');
+    }
+    break;
+  case 1:
+    userResponse = prompt(questionArray[questionNumber]);
+    if(userResponse === null){
+      userResponse = '';
+    }
+    userResponse = userResponse.toUpperCase();
+    if(userResponse === 'Y' || userResponse === 'YES'){
+      correctAnswers++;
+      alert('That is correct!');
+    }
+    else{
+      incorrectAnswers++;
+      alert('That is not correct, sorry.');
+    }
+    break;
+  case 2:
+    userResponse = prompt(questionArray[questionNumber]);
+    if(userResponse === null){
+      userResponse = '';
+    }
+    userResponse = userResponse.toUpperCase();
+    if(userResponse === 'Y' || userResponse === 'YES'){
+      correctAnswers++;
+      alert('That is correct!');
+    }
+    else{
+      incorrectAnswers++;
+      alert('That is not correct, sorry.');
+    }
+    break;
+  case 3:
+    userResponse = prompt(questionArray[questionNumber]);
+    if(userResponse === null){
+      userResponse = '';
+    }
+    userResponse = userResponse.toUpperCase();
+    if(userResponse === 'NO' || userResponse === 'N'){
+      correctAnswers++;
+      alert('That is correct!');
+    }
+    else{
+      incorrectAnswers++;
+      alert('That is not correct, sorry.');
+    }
+    break;
+  case 4:
+    userResponse = prompt(questionArray[questionNumber]);
+    if(userResponse === null){
+      userResponse = '';
+    }
+    userResponse = userResponse.toUpperCase();
+    if(userResponse === 'NO' || userResponse === 'N'){
+      correctAnswers++;
+      alert('That is correct!');
+    }
+    else{
+      incorrectAnswers++;
+      alert('That is not correct, sorry.');
+    }
+    break;
+  case 5:
+    var userNumResponse = -1;
+    var randomNumber = Math.ceil(100*Math.random());
+    console.log('Hidden number is ' + randomNumber);
+    var guesses = 1;
+    var maxGuesses = 4;
+    while(guesses <= maxGuesses){
+      userNumResponse = prompt(questionArray[questionNumber]);
+      if(userNumResponse === randomNumber){
+        alert('Yes, ' + userNumResponse + ' is the number I was thinking of! That only took you ' + (guesses+1) + ' attempt(s)!');
+        correctAnswers++;
+        guesses = maxGuesses;
+        break;
+      }
+      else{
+        if(guesses < maxGuesses && userNumResponse < randomNumber){
+          alert('That number is too low. Try again.');
+        }
+        else if(guesses === maxGuesses && userNumResponse < randomNumber){
+          alert('That number is too low. Sorry, that\'s all your guesses.');
+          incorrectAnswers++;
+        }
+        else if(guesses < maxGuesses && userNumResponse > randomNumber){
+          alert('That number is too high. Try again.');
+        }
+        else if(guesses === maxGuesses && userNumResponse > randomNumber){
+          alert('That number is too high. Sorry, that\'s all your guesses.');
+          incorrectAnswers++;
+        }
+      }
+      guesses++;
+    }
+    break;
+  case 6:
+    alert('fix this');
+    break;
+  default:
+    console.log('Quiz escaped set of 7 questions!');
+    break;
   }
 }
 
