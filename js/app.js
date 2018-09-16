@@ -113,86 +113,60 @@ function fillYNArray(yesOrNoString){
   }
 }
 
+function askRandNum(question,validAnswer){
+  var guesses = 0;
+  var maxGuesses = 4;
+  var userNumResponse = '';
+  while( guesses <= maxGuesses){
+    guesses++;
+    while(userNumResponse === ''){
+      userNumResponse = prompt(question);
+      console.log('Input was ' + userNumResponse);
+      if(parseInt(userNumResponse)){ //should run when given a parseable number string
+        console.log('Input could be parsed as an int');
+        userNumResponse = parseInt(userNumResponse, 10);
+      }
+      else{
+        console.log('Input could not be parsed');
+        userNumResponse = '';
+      }
+    }
+    console.log('Comparing guess #' + guesses + ' ' + userNumResponse + ' to ' + validAnswer);
+    if(userNumResponse === validAnswer){
+      console.log('Correct answer entered');
+      alert('Yes! ' + validAnswer + ' was the number I was thinking of.');
+      return true;
+    }
+    else if( userNumResponse > validAnswer && guesses < maxGuesses){
+      console.log('Answer too high - ' + userNumResponse + ' > ' + validAnswer);
+      alert('That number is too high. Try again.');
+      userNumResponse = '';
+    }
+    else if( userNumResponse < validAnswer && guesses < maxGuesses){
+      console.log('Answer too low - ' + userNumResponse + ' < ' + validAnswer);
+      alert('That number is too low. Try again.');
+      userNumResponse = '';
+    }
+    else{
+      console.log('Incorrect answer and out of guesses');
+      alert('That number is incorrect, and you are out of guesses. My number was ' + validAnswer);
+      return false;
+    }
+  }
+}
+
+if(askRandNum(questionArray[5],answerArray[5])){
+  correctAnswers++;
+}
+else{
+  incorrectAnswers++;
+}
 // function askQuestions(){
 //   var userResponse = '';
 //   for(var questionNumber = 0; questionNumber < questionArray.length; questionNumber++){
 //     console.log('Asking question #' + (questionNumber+1) + ': ' + questionArray[questionNumber]);
 //     switch(questionNumber){
-//     case 0:
-//       userResponse = prompt(questionArray[questionNumber]);
-//       if(userResponse === null){
-//         userResponse = '';
-//       }
-//       userResponse = userResponse.toUpperCase();
-//       if(userResponse === 'NO' || userResponse === 'N'){
-//         correctAnswers++;
-//         alert('That is correct!');
-//       }
-//       else{
-//         incorrectAnswers++;
-//         alert('That is not correct, sorry.');
-//       }
-//       break;
-//     case 1:
-//       userResponse = prompt(questionArray[questionNumber]);
-//       if(userResponse === null){
-//         userResponse = '';
-//       }
-//       userResponse = userResponse.toUpperCase();
-//       if(userResponse === 'Y' || userResponse === 'YES'){
-//         correctAnswers++;
-//         alert('That is correct!');
-//       }
-//       else{
-//         incorrectAnswers++;
-//         alert('That is not correct, sorry.');
-//       }
-//       break;
-//     case 2:
-//       userResponse = prompt(questionArray[questionNumber]);
-//       if(userResponse === null){
-//         userResponse = '';
-//       }
-//       userResponse = userResponse.toUpperCase();
-//       if(userResponse === 'Y' || userResponse === 'YES'){
-//         correctAnswers++;
-//         alert('That is correct!');
-//       }
-//       else{
-//         incorrectAnswers++;
-//         alert('That is not correct, sorry.');
-//       }
-//       break;
-//     case 3:
-//       userResponse = prompt(questionArray[questionNumber]);
-//       if(userResponse === null){
-//         userResponse = '';
-//       }
-//       userResponse = userResponse.toUpperCase();
-//       if(userResponse === 'NO' || userResponse === 'N'){
-//         correctAnswers++;
-//         alert('That is correct!');
-//       }
-//       else{
-//         incorrectAnswers++;
-//         alert('That is not correct, sorry.');
-//       }
-//       break;
-//     case 4:
-//       userResponse = prompt(questionArray[questionNumber]);
-//       if(userResponse === null){
-//         userResponse = '';
-//       }
-//       userResponse = userResponse.toUpperCase();
-//       if(userResponse === 'NO' || userResponse === 'N'){
-//         correctAnswers++;
-//         alert('That is correct!');
-//       }
-//       else{
-//         incorrectAnswers++;
-//         alert('That is not correct, sorry.');
-//       }
-//       break;
+
 //     case 5:
 //       var userNumResponse = -1;
 //       var randomNumber = Math.ceil(100*Math.random());
