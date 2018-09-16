@@ -37,6 +37,20 @@ questionArray.push('Do I currently have a dog?');
 questionArray.push('I\'m thinking of a number between 1 and 100, inclusive. Guess it!');
 questionArray.push('Name one of my favorite foods.');
 
+var correctBoolArray = [];
+correctBoolArray.push('Yes! I am at least 25 at this point in time.');
+correctBoolArray.push('Correct. I only have one brother.');
+correctBoolArray.push('Yep, I went to Oregon State for college.');
+correctBoolArray.push('That\'s right, they were living in Portland at that time.');
+correctBoolArray.push('You got it. I would like to adopt a dog, but have not done so.');
+
+var incorrectBoolArray = [];
+incorrectBoolArray.push('Nope. I am at least 25 at this point in time.');
+incorrectBoolArray.push('That\'s not right. I only have one brother.');
+incorrectBoolArray.push('You are incorrect. I went to Oregon State for college.');
+incorrectBoolArray.push('Sorry, but they were living in Portland at that time.');
+incorrectBoolArray.push('Almost right. I would like to adopt a dog, but have not done so.');
+
 var answerArray = [];
 answerArray.push('N');
 answerArray.push('Y');
@@ -87,7 +101,7 @@ function askYesNo(question,validAnswer,respCorrect,respIncorrect){
   return isCorrect;
 }
 for(var qNum = 0; qNum < 5; qNum++){
-  if(askYesNo(questionArray[qNum],answerArray[qNum], 'correct', 'incorrect') ){
+  if(askYesNo(questionArray[qNum],answerArray[qNum], correctBoolArray[qNum], incorrectBoolArray[qNum]) ){
     correctAnswers++;
   }
   else{
@@ -161,83 +175,38 @@ if(askRandNum(questionArray[5],answerArray[5])){
 else{
   incorrectAnswers++;
 }
-// function askQuestions(){
-//   var userResponse = '';
-//   for(var questionNumber = 0; questionNumber < questionArray.length; questionNumber++){
-//     console.log('Asking question #' + (questionNumber+1) + ': ' + questionArray[questionNumber]);
-//     switch(questionNumber){
 
-//     case 5:
-//       var userNumResponse = -1;
-//       var randomNumber = Math.ceil(100*Math.random());
-//       console.log('Hidden number is ' + randomNumber);
-//       var guesses = 1;
-//       var maxGuesses = 4;
-//       while(guesses <= maxGuesses){
-//         userNumResponse = prompt(questionArray[questionNumber]);
-//         userNumResponse = parseInt(userNumResponse, 10);
-//         if(userNumResponse === randomNumber){
-//           alert('Yes, ' + userNumResponse + ' is the number I was thinking of! That only took you ' + (guesses) + ' attempt(s)!');
-//           correctAnswers++;
-//           guesses = maxGuesses;
-//           break;
-//         }
-//         else{
-//           if(guesses < maxGuesses && userNumResponse < randomNumber){
-//             alert('That number is too low. Try again.');
-//           }
-//           else if(guesses === maxGuesses && userNumResponse < randomNumber){
-//             alert('That number is too low. Sorry, that\'s all your guesses.');
-//             incorrectAnswers++;
-//           }
-//           else if(guesses < maxGuesses && userNumResponse > randomNumber){
-//             alert('That number is too high. Try again.');
-//           }
-//           else if(guesses === maxGuesses && userNumResponse > randomNumber){
-//             alert('That number is too high. Sorry, that\'s all your guesses.');
-//             incorrectAnswers++;
-//           }
-//         }
-//         guesses++;
-//       }
-//       break;
-//     case 6:
-//       console.log('Asking about favorite food');
-//       //probably shouldn't rename the guesses variable for maintainability's sake...
-//       guesses = 0;
-//       maxGuesses = 6;
-//       var userFoodResponse = '';
-//       while(guesses < maxGuesses){
-//         userFoodResponse = prompt('Guess one of my top three favorite foods!');
-//         if(userFoodResponse === null){
-//           userFoodResponse = '';
-//         }
-//         userFoodResponse = userFoodResponse.toLowerCase();
-//         for(i = 0; i < foodsArray.length; i++){
-//           if(userFoodResponse === foodsArray[i]){
-//             alert('That\'s correct! You picked one of my favorite foods out of the valid set of ' + validFoodAnswers + '.');
-//             correctAnswers++;
-//             i = foodsArray.length;
-//             guesses = maxGuesses;
-//           }
-//         }
-//         if(guesses < maxGuesses){
-//           alert('That is not one of my top three foods. Try again.');
-//         }
-//         guesses++;
-//         if(guesses === maxGuesses){
-//           alert('Actually, you\'re out of guesses, sorry. A valid choice would be any of ' + validFoodAnswers + '.');
-//           incorrectAnswers++;
-//         }
-//       }
-//       break;
-//     default:
-//       console.log('Quiz escaped set of 7 questions!');
-//       break;
-//     }
-//   }
-// }
-// askQuestions();
+function askFoodQuestions(){
+  console.log('Asking about favorite food');
+  //probably shouldn't rename the guesses variable for maintainability's sake...
+  let guesses = 0;
+  let maxGuesses = 6;
+  let userFoodResponse = '';
+  while(guesses < maxGuesses){
+    userFoodResponse = prompt('Guess one of my top three favorite foods!');
+    if(userFoodResponse === null){
+      userFoodResponse = '';
+    }
+    userFoodResponse = userFoodResponse.toLowerCase();
+    for(i = 0; i < foodsArray.length; i++){
+      if(userFoodResponse === foodsArray[i]){
+        alert('That\'s correct! You picked one of my favorite foods out of the valid set of ' + validFoodAnswers + '.');
+        correctAnswers++;
+        i = foodsArray.length;
+        guesses = maxGuesses;
+      }
+    }
+    if(guesses < maxGuesses){
+      alert('That is not one of my top three foods. Try again.');
+    }
+    guesses++;
+    if(guesses === maxGuesses){
+      alert('Actually, you\'re out of guesses, sorry. A valid choice would be any of ' + validFoodAnswers + '.');
+      incorrectAnswers++;
+    }
+  }
+}
+askFoodQuestions();
 
 // Give slightly different messages based on if they answered at least half of the questions correctly.
 function congratsUser(){
