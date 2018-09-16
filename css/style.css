@@ -11,60 +11,59 @@ h1{
 }
 h2{
     font-size: 34px;
-    text-align: center;
     line-height: 34px;
     padding: 8.5px;
+    text-align: center;
 }
 h3{
     font-size: 28px;
-    text-align: left;
     line-height: 14px;
     padding: 20px 10px 10px 30px;
+    text-align: left;
 }
 #factsHeader{
     font-size: 32px;
-    text-align: center;
     line-height: 32px;
-    padding: 8px; 
+    padding: 8px;
+    text-align: center; 
 }
 img.self{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
     border-top-left-radius: 50%; 
     border-top-right-radius: 50%;
     border-bottom-left-radius: 5%;
     border-bottom-right-radius: 5%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
 }
 p{
-    padding-left: 14px;
     font-size: 28px;
     font-family: Arial, sans-serif;
-
+    padding-left: 14px;
 }
 ul{
-    list-style: circle;
-    padding-left: 12px;
-    line-height: 24px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 24px;
     font-style: italic;
+    list-style: circle;
+    line-height: 24px;
+    padding-left: 12px;
     text-align: center;
 }
 ol{
     box-align: center;
-    list-style-type: upper-roman;
-    text-emphasis: bold;
-    line-height: 24px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 24px;
+    list-style-type: upper-roman;
+    line-height: 24px;
     padding-left: 72px;
+    text-emphasis: bold;
 }
 footer{
     color: rgb(25,25,25);
     font-size: 38px;
-    text-align: center;
     line-height: 38px;
-    padding: 6px;    
+    padding: 6px;
+    text-align: center;    
 }
